@@ -1,0 +1,68 @@
+body.light {
+    background-color: #eee;
+}
+
+.light #modal {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.light .modal-body {
+    background-color: rgb(255,255,255,1);
+    color: black;
+}
+
+.light h1 {
+    color: #111;
+}
+
+.light header button, .light #modal button {
+    background-color: transparent;
+    border: 2px solid #555;
+    padding: 15px;
+    border-radius: 10px;
+    color: #555;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.light .letter-block {
+    background-color: #ddd;
+}
+
+.light .attempt.current-attempt > .letter-block {
+    background-color: transparent;
+    border: 2px solid #555;
+}
+
+.light .keyboard button {
+    background-color: #ddd;
+    border: none;
+    color: #111;
+}
+
+.light .letter-block {
+    color: #111;
+}
+
+.light .attempt > .correct, .light .correct > button, .light .example-block.correct {
+    background-color: rgb(84, 153, 84);
+}
+
+.light .attempt > .misplaced, .light .misplaced > button, .light .example-block.misplaced {
+    background-color: rgb(204, 175, 48);
+}
+
+.light .attempt > .absent, .light .absent > button, .light .example-block.absent {
+    background-color: #aaa;
+}
+
+.light .notification {
+    background-color: rgb(202, 66, 66);
+    color: #111;
+}
+
+.light .notification.won {
+    background-color:rgb(84, 153, 84);
+}
