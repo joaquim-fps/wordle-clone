@@ -1,8 +1,5 @@
 import { getDictionary } from "./dictionaryFilter.js";
 
-let current_theme = getCookie("theme");
-changeThemes();
-
 let words = await getDictionary(),
     right_word = "",
     current_attempt = 0,
@@ -206,69 +203,6 @@ function shuffle(array) {
     }
 
     return array;
-}
-
-function changeThemes() {
-    let toggleThemeBtn = document.querySelector("#theme_button");
-    document.body.classList.add(current_theme);
-
-    function themeSwitch(e) {
-        if (current_theme == "dark") {
-            document.body.classList.add("light");
-            document.body.classList.remove("dark");
-
-            setCookie("theme", "light", 86400 * 7, "/");
-            current_theme = getCookie("theme");
-
-            toggleThemeBtn.children[0].textContent = "brightness_2";
-        } else {
-            document.body.classList.add("dark");
-            document.body.classList.remove("light");
-
-            setCookie("theme", "dark", 86400 * 7, "/");
-            current_theme = getCookie("theme");
-
-            toggleThemeBtn.children[0].textContent = "brightness_high";
-        }
-        console.log(current_theme);
-    }
-
-    toggleThemeBtn.addEventListener("click", themeSwitch);
-}
-
-function getCookie(k) {
-    let c = String(document.cookie).split(";"),
-        neq = k + "=";
-
-    for (let i = 0; i < c.length; i++) {
-        let d = c[i];
-
-        while (d.charAt(0) === " ") {
-            c[i] = c[i].substring(1, d.length);
-        }
-
-        if (c[i].indexOf(neq) === 0) {
-            return decodeURIComponent(c[i].substring(neq.length, c[i].length));
-        }
-    }
-
-    return null;
-}
-
-function setCookie(k, v, expira, path) {
-    path = path || "/";
-
-    let d = new Date();
-    d.setTime(d.getTime() + expira * 1000);
-
-    document.cookie =
-        encodeURIComponent(k) +
-        "=" +
-        encodeURIComponent(v) +
-        "; expires=" +
-        d.toUTCString() +
-        "; path=" +
-        path;
 }
 
 function setNewGame() {
