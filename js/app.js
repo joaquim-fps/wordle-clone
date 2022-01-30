@@ -1,11 +1,13 @@
 import { getDictionary } from "./dictionaryFilter.js";
 
-let words = shuffle(await getDictionary()),
-    right_word = words[45],
+let current_theme = getCookie("theme");
+changeThemes();
+
+let words = await getDictionary(),
+    right_word = "",
     current_attempt = 0,
     current_letter = 0,
     game_over = false,
-    current_theme = getCookie("theme"),
     notification = document.querySelector(".notification"),
     game_board = document.querySelectorAll(".attempt");
 
@@ -270,7 +272,7 @@ function setCookie(k, v, expira, path) {
 }
 
 function setNewGame() {
-    right_word = shuffle(words)[45];
+    right_word = shuffle(words)[42];
     console.log(right_word);
 
     game_board.forEach(function (attempt) {
@@ -302,7 +304,6 @@ function setNewGame() {
 }
 
 function app() {
-    changeThemes();
     setUpKeyboard();
     setNewGame();
 }
