@@ -11,48 +11,45 @@ let words = await getDictionary(),
 function setUpKeyboard() {
     const keyboard_letters = document.querySelectorAll(".key");
 
-    keyboard_letters.forEach(function (letter) {
-        letter.addEventListener("click", function KeyListener(e) {
+    keyboard_letters.forEach((letter) => {
+        letter.addEventListener("click", (e) => {
             if (!game_over) {
                 processKey(letter.getAttribute("data-key"));
             }
         });
     });
 
-    const gameKeyboard = document.body.addEventListener(
-        "keydown",
-        function typingListener(e) {
-            const re = /^[A-Za-z]{0,1}$/;
+    document.body.addEventListener("keydown", (e) => {
+        const re = /^[A-Za-z]{0,1}$/;
 
-            if (!game_over) {
-                switch (e.key) {
-                    case "Enter":
-                        processKey("↵");
-                        break;
-                    case "Backspace":
-                        processKey("←");
-                        break;
-                    default:
-                        if (re.test(e.key)) {
-                            processKey(e.key);
-                        }
-                }
+        if (!game_over) {
+            switch (e.key) {
+                case "Enter":
+                    processKey("↵");
+                    break;
+                case "Backspace":
+                    processKey("←");
+                    break;
+                default:
+                    if (re.test(e.key)) {
+                        processKey(e.key);
+                    }
             }
         }
-    );
+    });
 }
 
 function processKey(key) {
     let attempt = game_board[current_attempt],
-        letter_block = attempt.children;
+        letter_blocks = attempt.children;
+
+    const num_letter_blocks = letter_blocks.length;
 
     notification.classList = "notification hide";
 
     switch (key) {
         case "↵" || "Enter":
-            if (
-                attempt.children[attempt.children.length - 1].textContent != ""
-            ) {
+            if (letter_blocks[num_letter_blocks - 1].textContent != "") {
                 if (checkValidity(attempt)) {
                     attempt.classList.remove("current-attempt");
 
@@ -109,12 +106,12 @@ function processKey(key) {
             break;
         case "←" || "Backspace":
             if (current_letter > 0) current_letter--;
-            letter_block[current_letter].textContent = "";
+            letter_blocks[current_letter].textContent = "";
             break;
         default:
-            if (current_letter < attempt.children.length) {
-                letter_block[current_letter].textContent = key.toLowerCase();
-                if (current_letter < attempt.children.length) current_letter++;
+            if (current_letter < num_letter_blocks) {
+                letter_blocks[current_letter].textContent = key.toLowerCase();
+                current_letter++;
             }
     }
 }
@@ -232,12 +229,13 @@ function setNewGame() {
     current_letter = 0;
 
     game_over = false;
-    document
-        .querySelector("#reload_button")
-        .addEventListener("click", setNewGame);
 }
 
 function app() {
+    document
+        .querySelector("#reload_button")
+        .addEventListener("click", setNewGame);
+
     setUpKeyboard();
     setNewGame();
 }
