@@ -56,11 +56,7 @@ function processKey(key) {
                     if (checkAttempt(attempt) == 5) {
                         notification.textContent = "Congratulations!";
                         notification.classList.remove("hide");
-                        notification.classList.add(
-                            "show",
-                            "won",
-                            "animate-forward"
-                        );
+                        notification.classList.add("show", "won");
                         game_over = true;
                     } else {
                         current_letter = 0;
@@ -77,31 +73,19 @@ function processKey(key) {
                                 "The right word was " +
                                 right_word.toUpperCase();
                             notification.classList.remove("hide");
-                            notification.classList.add(
-                                "show",
-                                "lost",
-                                "animate-forward"
-                            );
+                            notification.classList.add("show", "lost");
                             game_over = true;
                         }
                     }
                 } else {
                     notification.textContent = "Invalid word!";
                     notification.classList.remove("hide");
-                    notification.classList.add(
-                        "show",
-                        "invalid",
-                        "animate-forward"
-                    );
+                    notification.classList.add("show", "invalid");
                 }
             } else {
                 notification.textContent = "Not enough letters!";
                 notification.classList.remove("hide");
-                notification.classList.add(
-                    "show",
-                    "notenough",
-                    "animate-forward"
-                );
+                notification.classList.add("show", "notenough");
             }
             break;
         case "←" || "Backspace":
