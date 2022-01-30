@@ -1,158 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/structure.css">
-    <link rel="stylesheet" href="./css/dark-mode.css">
-    <link rel="stylesheet" href="./css/light-mode.css">
-    <link rel="stylesheet" href="./css/animation.css">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/structure.css" />
+    <link rel="stylesheet" href="./css/dark-mode.css" />
+    <link rel="stylesheet" href="./css/light-mode.css" />
+    <link rel="stylesheet" href="./css/animation.css" />
+
     <title>Wordle Clone App</title>
-</head>
-<body>
+    <script type="module" src="./js/app.js" defer></script>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <button aria-label="instruções" id="howto_button">
-                <a href="#modal">?</a>    
+      <header>
+        <button aria-label="instruções" id="howto_button">
+          <a href="#modal">?</a>
+        </button>
+        <h1>Wordle Clone</h1>
+        <button aria-label="novo jogo" id="reload_button">
+          <i class="material-icons">cached</i>
+        </button>
+        <button aria-label="tema" id="theme_button">
+          <i class="material-icons">brightness_high</i>
+        </button>
+      </header>
+      <section id="modal">
+        <div class="modal-body">
+          <div class="modal-header">
+            <h2>Instructions</h2>
+            <button aria-label="fechar">
+              <a href="#close" class="close">X</a>
             </button>
-            <h1>Wordle Clone</h1>
-            <button aria-label="novo jogo" id="reload_button">
-                <i class="material-icons">cached</i>
-            </button>
-            <button aria-label="tema" id="theme_button">
-                <i class="material-icons">brightness_high</i>
-            </button>
-        </header>
-        <section id="modal">
-            <div class="modal-body">
-                <div class="modal-header">
-                    <h2>Instructions</h2>
-                    <button aria-label='fechar'>   
-                        <a href="#close" class="close">X</a>
-                    </button>
-                </div>
-                <div class="modal-content">
-                    <p>Guess the WORDLE in 6 tries.</p>
-                    <p>Each guess must be a valid 5 letter word. Hit the enter button to submit.</p>
-                    <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+          </div>
+          <div class="modal-content">
+            <p>Guess the WORDLE in 6 tries.</p>
+            <p>
+              Each guess must be a valid 5 letter word. Hit the enter button to
+              submit.
+            </p>
+            <p>
+              After each guess, the color of the tiles will change to show how
+              close your guess was to the word.
+            </p>
 
-                    <div class="examples">
-                        <div class="example ">
-                            <p>This means the letter is in the word and in the correct spot.</p>
-                            <div class="letter-block example-block correct">
-                                P
-                            </div> 
-                        </div>
-                        <div class="example ">
-                            <p>This means the letter is in the word but in the wrong spot.</p>
-                            <div class="letter-block example-block misplaced">
-                                R
-                            </div> 
-                        </div>
-                        <div class="example">
-                            <p>This means the letter is not in the word in any spot.</p>
-                            <div class="letter-block example-block absent">
-                                J
-                            </div> 
-                        </div>
-                    </div>
-                </div>
+            <div class="examples">
+              <div class="example">
+                <p>
+                  This means the letter is in the word and in the correct spot.
+                </p>
+                <div class="letter-block example-block correct">P</div>
+              </div>
+              <div class="example">
+                <p>
+                  This means the letter is in the word but in the wrong spot.
+                </p>
+                <div class="letter-block example-block misplaced">R</div>
+              </div>
+              <div class="example">
+                <p>This means the letter is not in the word in any spot.</p>
+                <div class="letter-block example-block absent">J</div>
+              </div>
             </div>
-        </section>
-        <main>
-            <div class="notification hide">
-                placeholder
-            </div>
-            <div class="game">
-                <div class="attempt current-attempt">
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                </div>
-                <div class="attempt">
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                </div>
-                <div class="attempt">
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                </div>
-                <div class="attempt">
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                </div>
-                <div class="attempt">
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                </div>
-                <div class="attempt">
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                    <div class="letter-block"></div>
-                </div>
-            </div>
-        </main>
+          </div>
+        </div>
+      </section>
+      <main>
+        <div class="notification hide">placeholder</div>
+        <div class="game">
+          <div class="attempt current-attempt">
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+          </div>
+          <div class="attempt">
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+          </div>
+          <div class="attempt">
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+          </div>
+          <div class="attempt">
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+          </div>
+          <div class="attempt">
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+          </div>
+          <div class="attempt">
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+            <div class="letter-block"></div>
+          </div>
+        </div>
+      </main>
 
-        <section class="keyboard">
-            <div class="row1">
-                <div aria-label="q" data-key="q" id="q" class="key"><button>q</button></div>
-                <div aria-label="w" data-key="w" id="w" class="key"><button>w</button></div>
-                <div aria-label="e" data-key="e" id="e" class="key"><button>e</button></div>
-                <div aria-label="r" data-key="r" id="r" class="key"><button>r</button></div>
-                <div aria-label="t" data-key="t" id="t" class="key"><button>t</button></div>
-                <div aria-label="y" data-key="y" id="y" class="key"><button>y</button></div>
-                <div aria-label="u" data-key="u" id="u" class="key"><button>u</button></div>
-                <div aria-label="i" data-key="i" id="i" class="key"><button>i</button></div>
-                <div aria-label="o" data-key="o" id="o" class="key"><button>o</button></div>
-                <div aria-label="p" data-key="p" id="p" class="key"><button>p</button></div>
-            </div>
-            <div class="row2">
-                <div aria-label="a" data-key="a" id="a" class="key"><button>a</button></div>
-                <div aria-label="s" data-key="s" id="s" class="key"><button>s</button></div>
-                <div aria-label="d" data-key="d" id="d" class="key"><button>d</button></div>
-                <div aria-label="f" data-key="f" id="f" class="key"><button>f</button></div>
-                <div aria-label="g" data-key="g" id="g" class="key"><button>g</button></div>
-                <div aria-label="h" data-key="h" id="h" class="key"><button>h</button></div>
-                <div aria-label="j" data-key="j" id="j" class="key"><button>j</button></div>
-                <div aria-label="k" data-key="k" id="k" class="key"><button>k</button></div>
-                <div aria-label="l" data-key="l" id="l" class="key"><button>l</button></div>
-                <div aria-label="apagar" data-key="←" id="erase" class="key"><button>
-                    <i class="material-icons">arrow_back</i>
-                </button></div>
-                
-            </div>
-            <div class="row3">
-                <div aria-label="z" data-key="z" id="z" class="key"><button>z</button></div>
-                <div aria-label="x" data-key="x" id="x" class="key"><button>x</button></div>
-                <div aria-label="c" data-key="c" id="c" class="key"><button>c</button></div>
-                <div aria-label="v" data-key="v" id="v" class="key"><button>v</button></div>
-                <div aria-label="b" data-key="b" id="b" class="key"><button>b</button></div>
-                <div aria-label="n" data-key="n" id="n" class="key"><button>n</button></div>
-                <div aria-label="m" data-key="m" id="m" class="key"><button>m</button></div>
-                <div aria-label="enter" data-key="↵" id="enter" class="key"><button>ENTER</button></div>
-            </div>
-        </section>
+      <section class="keyboard">
+        <div class="row1">
+          <div aria-label="q" data-key="q" id="q" class="key">
+            <button>q</button>
+          </div>
+          <div aria-label="w" data-key="w" id="w" class="key">
+            <button>w</button>
+          </div>
+          <div aria-label="e" data-key="e" id="e" class="key">
+            <button>e</button>
+          </div>
+          <div aria-label="r" data-key="r" id="r" class="key">
+            <button>r</button>
+          </div>
+          <div aria-label="t" data-key="t" id="t" class="key">
+            <button>t</button>
+          </div>
+          <div aria-label="y" data-key="y" id="y" class="key">
+            <button>y</button>
+          </div>
+          <div aria-label="u" data-key="u" id="u" class="key">
+            <button>u</button>
+          </div>
+          <div aria-label="i" data-key="i" id="i" class="key">
+            <button>i</button>
+          </div>
+          <div aria-label="o" data-key="o" id="o" class="key">
+            <button>o</button>
+          </div>
+          <div aria-label="p" data-key="p" id="p" class="key">
+            <button>p</button>
+          </div>
+        </div>
+        <div class="row2">
+          <div aria-label="a" data-key="a" id="a" class="key">
+            <button>a</button>
+          </div>
+          <div aria-label="s" data-key="s" id="s" class="key">
+            <button>s</button>
+          </div>
+          <div aria-label="d" data-key="d" id="d" class="key">
+            <button>d</button>
+          </div>
+          <div aria-label="f" data-key="f" id="f" class="key">
+            <button>f</button>
+          </div>
+          <div aria-label="g" data-key="g" id="g" class="key">
+            <button>g</button>
+          </div>
+          <div aria-label="h" data-key="h" id="h" class="key">
+            <button>h</button>
+          </div>
+          <div aria-label="j" data-key="j" id="j" class="key">
+            <button>j</button>
+          </div>
+          <div aria-label="k" data-key="k" id="k" class="key">
+            <button>k</button>
+          </div>
+          <div aria-label="l" data-key="l" id="l" class="key">
+            <button>l</button>
+          </div>
+          <div aria-label="apagar" data-key="←" id="erase" class="key">
+            <button>
+              <i class="material-icons">arrow_back</i>
+            </button>
+          </div>
+        </div>
+
+        <div class="row3">
+          <div aria-label="z" data-key="z" id="z" class="key">
+            <button>z</button>
+          </div>
+          <div aria-label="x" data-key="x" id="x" class="key">
+            <button>x</button>
+          </div>
+          <div aria-label="c" data-key="c" id="c" class="key">
+            <button>c</button>
+          </div>
+          <div aria-label="v" data-key="v" id="v" class="key">
+            <button>v</button>
+          </div>
+          <div aria-label="b" data-key="b" id="b" class="key">
+            <button>b</button>
+          </div>
+          <div aria-label="n" data-key="n" id="n" class="key">
+            <button>n</button>
+          </div>
+          <div aria-label="m" data-key="m" id="m" class="key">
+            <button>m</button>
+          </div>
+          <div aria-label="enter" data-key="↵" id="enter" class="key">
+            <button>ENTER</button>
+          </div>
+        </div>
+      </section>
     </div>
-    <script type="module" src="./js/app.js"></script>
-</body>
+  </body>
 </html>
