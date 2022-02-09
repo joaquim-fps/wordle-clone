@@ -8,7 +8,7 @@
         game_board = document.querySelectorAll(".attempt");
 
     async function getWords() {
-        const wordList = await fetch("../resources/words.json").then(
+        const wordList = await fetch("./resources/words.json").then(
             (response) => response.json()
         );
         return wordList.words;
