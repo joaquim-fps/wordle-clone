@@ -4,5 +4,5 @@ A version of the Wordle app using vanilla js/css. It gets a random word from a w
 
 ## Improvements to be done
 
-- Fetch random word from API to reduce load times.
-- Implement hard mode, where you need to use previous clues.
+-   Fetch random word from an API to reduce load times. Currently, the word list is from Webster's English Dictionary and is stored locally.
+-   Implement hard mode, where you need to use previous clues.
